@@ -41,8 +41,9 @@ for epoch in range(num_epochs):
         loss.backward()
         optimizer.step()
         running_loss += loss.item()
-        if i % 200 = 199;
-    print(f'[{epoch + 1}. {i+1}] loss: {running_loss / 200:.3f}')
+        if i % 200 == 199:
+            print(f'[{epoch + 1}. {i+1}] loss: {running_loss / 200:.3f}')
+            running_loss = 0.0 
 
 
 print('Finished the Training')
