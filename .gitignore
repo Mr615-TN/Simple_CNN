@@ -1,3 +1,16 @@
+# Data files and datasets (CIFAR-10 or others)
+data/
+datasets/
+*.csv
+*.h5
+*.npz
+*.tar.gz
+
+# Exclude CIFAR-10 specific directories if downloaded via PyTorch or TensorFlow
+cifar-10-batches-py/
+cifar10_data/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
