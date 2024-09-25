@@ -3,6 +3,7 @@ import torch.nn as nn
 import torch.optim as optim
 import torchvision
 import torchvision.transforms as transforms 
+import multiprocessing
 
 class SimpleCNN(nn.Module):
     def __init__(self):
@@ -67,3 +68,5 @@ print(f'Accuracy on the test set: {100 * correct/total:.2f}%')
 
 torch.save(model.state_dict(), 'simple_cnn.pth')
 print("model saved to simple_cnn.pth")
+
+#def main():
