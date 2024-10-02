@@ -34,6 +34,7 @@ optimizer = optim.Adam(model.parameters(), lr=0.001)
 
 num_epochs = 5 
 for epoch in range(num_epochs):
+    running_loss = 0.0 
     for i, data in enumerate(trainloader,0):
         inputs, labels = data[0].to(device), data[1].to(device)
         optimizer.zero_grad()
@@ -50,7 +51,7 @@ for epoch in range(num_epochs):
 print('Finished the Training')
 
 testset = torchvision.datasets.CIFAR10(root='./data', train=False, download=True, transform=transform)
-testloader = torch.utils.data.DataLoader(testset, batch_size,shuffle=False,num_workers=2)
+testloader = torch.utils.data.DataLoader(testset, batch_size = 32,shuffle=False,num_workers=2)
 
 model.eval()
 correct=0 
