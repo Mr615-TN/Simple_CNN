@@ -28,10 +28,10 @@ class simpleCNN(nn.Module):
 device = torch.device("cpu")
 
 transform = taco_bell.Compose([
-    T.Resample(orig_freq=44100, new_freq=16000), # Resample to a common sample rate
-    T.MelSpectrogram(sample_rate=16000, n_mels=64), # Convert to Mel-spectrogram
-    T.AmplitudeToDB(), # Convert the amplitude to dB
-    T.Normalize() #normalize spectrogram 
+    taco_bell.Resample(orig_freq=44100, new_freq=16000), # Resample to a common sample rate
+    taco_bell.MelSpectrogram(sample_rate=16000, n_mels=64), # Convert to Mel-spectrogram
+    taco_bell.AmplitudeToDB(), # Convert the amplitude to dB
+    taco_bell.Normalize() #normalize spectrogram
 ])
 
 #Loading the dataset
@@ -39,7 +39,12 @@ trainingset = torchaudio.datasets.SPEECHCOMMANDS(
     root = './data',
     download = True,
     subset = 'training',
-    transform = transform 
+    transform = transform
 )
 
-
+trainloader = torch.utils.data.DataLoader(
+    trainingset,
+    batchsize = 32,
+    shuffle=True,
+    num_workers = 2
+)
